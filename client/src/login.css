@@ -1,0 +1,15 @@
+.form-box {
+    max-width: 500px;
+    margin: 30px;
+    padding: 50px;
+    background: #ffffff;
+    border: 10px solid crimson;
+    text-align: center;
+  }
+.form-box:hover{
+    background-color: rgb(245, 142, 104);
+}
+
+input, textarea {
+    width: 100%;
+  }
