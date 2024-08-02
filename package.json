@@ -1,13 +1,16 @@
 {
-  "name": "server",
+  "name": "book",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@emotion/react": "*",
-    "@emotion/styled": "*",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
     "@material-ui/core": "*",
-    "@mui/icons-material": "*",
-    "@mui/material": "*",
+    "@mui/icons-material": "^5.15.20",
+    "@mui/material": "^5.15.20",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.7",
     "bootstrap": "^5.3.3",
     "concurrently": "^8.2.2",
@@ -17,17 +20,18 @@
     "mongodb": "^6.5.0",
     "mongoose": "^8.3.0",
     "nodemon": "^3.1.0",
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
     "react-router-dom": "^6.22.3",
     "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "react-scripts start",
     "build": "npm run build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "concurrently \"npm run start\" \"node server.js\""
   },
   "eslintConfig": {
     "extends": [
@@ -46,7 +50,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "ajv": "^7.2.4"
   }
 }
-
-
