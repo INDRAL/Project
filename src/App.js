@@ -9,7 +9,7 @@ import MyBookshelf from './MyBookshelf';
 import Signup from './Signup';
 import MyDashboard from './MyDashboard';
 import Axios from "axios";
-Axios.defaults.baseURL = "http://localhost:5000";
+Axios.defaults.baseURL = "https://server-g1s0.onrender.com";
 // Axios.defaults.baseURL = "http://ec2-3-105-185-92.ap-southeast-2.compute.amazonaws.com:8188";
 // Axios.defaults.baseURL = "http://localhost:5000";
 function App() {

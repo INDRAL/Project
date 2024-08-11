@@ -39,7 +39,7 @@ function MyDashboard (  ) {
       navigate('/MyBookshelf');
       }
     useEffect(() => {
-    fetch(`http://localhost:5000/mywishlist/`+sessionStorage.getItem('email'))
+    fetch(`https://server-g1s0.onrender.com/mywishlist/`+sessionStorage.getItem('email'))
     .then(response => {
         if (!response.ok) {
             throw new Error('Network response was not ok');
