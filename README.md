@@ -16,12 +16,13 @@ The page will reload when you make changes.\
 **signup**
 
 New user can signup with the the details mentioned.
-![Screenshot 2024-07-17 133359](https://github.com/user-attachments/assets/0a821968-aa3f-46a5-a514-08436b41eb12)
+![Screenshot 2024-08-12 132639](https://github.com/user-attachments/assets/398fad17-0c7b-4a5c-a1bf-69b7e840e85b)
 
 **Login**
 
 Login with username and password.In this case Email:angai94@gmail.com,password:hello123,on successfull login it will redirect to mybookshelf page .
-![Screenshot 2024-07-16 193415](https://github.com/user-attachments/assets/19f51a95-eda5-4866-bc99-c9b0430b9f6b)
+![Screenshot 2024-08-12 132616](https://github.com/user-attachments/assets/ca5fddb5-85ae-406e-8322-5f4747767be7)
+
 
 
 **MyBookshelf**
