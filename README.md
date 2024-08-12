@@ -35,7 +35,10 @@ click Dashboard in Menu to view books added
 ![Screenshot 2024-08-12 123831](https://github.com/user-attachments/assets/69bb3f34-f252-44a3-bd9d-fceef87bec18)
 
 **MyDashboard**
+
+
 Type the percentage of progress in progress box and click update progress button to update.
+![Screenshot 2024-08-12 124138](https://github.com/user-attachments/assets/69b4c851-6fcb-4a30-817e-24701f21ef4e)
 
 *Updated progress will be shown in progress bar 
 ![Screenshot 2024-08-12 124236](https://github.com/user-attachments/assets/b80d5189-2efc-4d47-b7e1-38812b1a1a4e)
