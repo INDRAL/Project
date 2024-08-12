@@ -29,9 +29,8 @@ Login with username and password.In this case Email:angai94@gmail.com,password:h
 Type the search Term,it will display all the related books.
 ![Screenshot 2024-08-12 123718](https://github.com/user-attachments/assets/888cc810-7546-41d6-8662-a13edce5e9a8)
 
-![Screenshot 2024-07-16 194842](https://github.com/user-attachments/assets/42a037d1-435f-4a55-a4c4-c0bd57bc5867)
-![Screenshot 2024-07-17 134644](https://github.com/user-attachments/assets/10095708-f6a4-4dc8-a6fe-60dc012cb7e7)
 Info,preview and buy link is given,click checkcircle icon to addbook to your dashboard.
+
 click Dashboard in Menu to view books added 
 ![Screenshot 2024-08-12 123831](https://github.com/user-attachments/assets/69bb3f34-f252-44a3-bd9d-fceef87bec18)
 
