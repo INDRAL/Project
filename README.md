@@ -42,6 +42,7 @@ Type the percentage of progress in progress box and click update progress button
 
 *Updated progress will be shown in progress bar 
 ![Screenshot 2024-08-12 124236](https://github.com/user-attachments/assets/b80d5189-2efc-4d47-b7e1-38812b1a1a4e)
+
 *Remove book from dashbord using delete icon.
 ![Screenshot 2024-08-12 131450](https://github.com/user-attachments/assets/b0c6fe1a-1f15-4b8c-8eb9-b9cac7860632)
 
