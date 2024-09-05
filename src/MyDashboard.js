@@ -1,10 +1,8 @@
-
 import React, { useState, useEffect } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
-import CardHeader from '@mui/material/CardHeader';
 import {CardActions} from '@mui/material';
 import { Grid, Typography } from '@mui/material';
 import Container from '@mui/material/Container';
@@ -23,21 +21,21 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import LinearProgress from '@mui/material/LinearProgress';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { red } from '@mui/material/colors';
+import Divider from '@mui/material/Divider';
 
-
+// s
 const pages = ['Bookshelf'];
-
 function MyDashboard (  ) {
   const [data, setData] = useState([]);
   const [progress, setProgress] = useState(' ');
     const [alert, setAlert] = useState(false);
     const [alertContent, setAlertContent] = useState('');
-    
-    
     const navigate = useNavigate();
     const openmenu=()=>{
       navigate('/MyBookshelf');
       }
+
+
     useEffect(() => {
     fetch(`https://server-g1s0.onrender.com/mywishlist/`+sessionStorage.getItem('email'))
     .then(response => {
@@ -67,9 +65,9 @@ function MyDashboard (  ) {
     return (
       <div style={{ height: 350, width: '100%' }}>
         <Container maxWidth={false} disableGutters>
-        <AppBar position="sticky" sx={{ bgcolor: "crimson"}}>
-              <Container maxWidth="xl">
-                <Toolbar disableGutters>
+               <AppBar position="sticky" sx={{ bgcolor: "#FF474C",maxWidth:"100%"}}>
+              <Container maxWidth="lg">
+                <Toolbar disableGutters maxWidth="xl">
                 <Box
                     component="img"
                     sx={{
@@ -88,7 +86,7 @@ function MyDashboard (  ) {
                     sx={{
                       mr: 2,
                       display: { xs: 'none', md: 'flex' },
-                      fontFamily: 'monospace',
+                      fontFamily: 'initial',
                       fontWeight: 700,
                       letterSpacing: '.3rem',
                       color: 'inherit',
@@ -106,12 +104,15 @@ function MyDashboard (  ) {
                 {page}
               </Button>
             ))}
-                  <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>  
+             
+              
+                  <Box sx={{ flexGrow: 2,fontFamily: 'initial', display: { xs: 'none', md: 'flex' } }}>  
                   </Box>
                   {alert ? <Alert variant="filled" severity="success">{alertContent}</Alert> : <></> }          
-        <Badge badgeContent={sessionStorage.getItem('name')} color="primary">
+                  <Badge badgeContent={sessionStorage.getItem('name')} color="primary">
         <IconButton  onClick={logout} sx={{ p: 0 }}>
-        <LogoutIcon></LogoutIcon>
+        
+        <LogoutIcon> </LogoutIcon>
       </IconButton>
       </Badge>
       </Toolbar>
@@ -122,23 +123,9 @@ function MyDashboard (  ) {
               
                data.map((result,index)=>(
                 
-                <Grid item xs={12} sm={4} ms={4} key={index} >
-                  <Card sx={{ maxWidth:500,backgroundColor:"rgb(245, 142, 104)"}}>
-                  <CardHeader 
-                 title={
-                  <Typography gutterBottom noWrap variant="body1"  component="h2">
-                    {result.title}
-                    <Tooltip title="progress" arrow>
-                   
-                  </Tooltip>
-                  </Typography>
-                  
-                 }
-                 style={{textAlign:"center"}}
-                 />
-                 <Tooltip title="progress" arrow>
-                  <LinearProgress variant="determinate"  value={result.progress} />
-                  </Tooltip>
+                <Grid item xs={12} sm={3} ms={3} key={index} >
+                  <Card sx={{ maxWidth:500,backgroundColor:"white"}}>
+                 
       
                   <CardMedia
                     sx={{ height: 350}}
@@ -146,17 +133,23 @@ function MyDashboard (  ) {
                     title={result.title}
                     
                   />
+                   <Divider /> 
+                  <Tooltip title={`Updated progress: ${result.progress}%`} arrow>
+                <LinearProgress variant="determinate" color='success'  value={result.progress}  />
+                </Tooltip>
                   <CardActions >
                   <Stack direction="row" spacing={2} >
                   <TextField id="outlined-basic" label="progress" variant="outlined"  onChange={(e) => {setProgress(e.target.value) }} size='small'/>
         <Button onClick={() => {
           var id=result.id
+          if((progress>0)&&(progress<=100))
+          {
           Axios.put('/updateprogress', { progress,id }).then((resp) => {
             if(resp.status===200)
               {
                 setAlertContent('progress updated successfully');
                 setAlert(true);
-                window.location.reload();
+               
       
               }
               else if(resp.status===203)
@@ -164,8 +157,13 @@ function MyDashboard (  ) {
                 setAlertContent('No updates');
                 setAlert(true);
               }
-          })
-          
+            })
+          }
+          else
+            {
+            setAlertContent('Enter a valid progress.');
+            setAlert(true);
+            }
           
         }}
         >

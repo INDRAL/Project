@@ -5,12 +5,12 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import CardMedia from '@mui/material/CardMedia'
 import PreviewIcon from '@mui/icons-material/Preview';
 import InfoIcon from '@mui/icons-material/Info';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import CardHeader from '@mui/material/CardHeader';
+import AutoStoriesIcon from '@mui/icons-material/AutoStories';
+
+
 import Link from '@material-ui/core/Link';
 import Stack from '@mui/material/Stack';
 import {CardActions} from '@mui/material';
@@ -27,6 +27,7 @@ import { Button } from '@mui/material';
 import { Tooltip } from '@mui/material';
 import Axios from 'axios';
 import Alert from '@mui/material/Alert';
+import Divider from '@mui/material/Divider';
 
 
 const pages = ['Dashboard'];
@@ -84,38 +85,37 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 function MyBookshelf (  ) {
   const [data, setData] = useState({items: []});
-  
-    const [searchTerm, setSearchTerm] = useState('deer');
-    const [alert, setAlert] = useState(false);
-    const [alertContent, setAlertContent] = useState('');
+  const [searchTerm, setSearchTerm] = useState('deer');
+  const [alert, setAlert] = useState(false);
+  const [alertContent, setAlertContent] = useState('');
     
+  const navigate = useNavigate();
+  const openmenu=()=>
+  {
+    navigate('/MyDashboard');
+  }
+
+  useEffect(() => {
     
-    const navigate = useNavigate();
-    const openmenu=()=>{
-      navigate('/MyDashboard');
-      }
-   useEffect(() => {
-    // inputField.current = "GeeksforGeeeks";
-fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&maxResults=40&printsec=frontcover&img=1&zoom=10&key=AIzaSyDVqOWoSU3UhbVb5GOzhUH51I5Q_EDA74A `)
+  fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&maxResults=40&printsec=frontcover&img=5&zoom=10&key=AIzaSyDVqOWoSU3UhbVb5GOzhUH51I5Q_EDA74A `)
     .then(response => response.json())
     .then(result => {
       setData(result);
       console.log(result); // Log the fetched data
   })
-},[searchTerm]) 
-  
+  },[searchTerm]) 
 
-  const onInputChange = (e ) => {
-     e.preventDefault();
-     if(e.target.value.length==0)
-     {
-      setSearchTerm("apple");
-     }
-     else
+  const onInputChange = (e ) => 
     {
-      setSearchTerm(e.target.value);
+    e.preventDefault();
+    if(e.target.value.length===0)
+    {
+    setSearchTerm("apple");
     }
-    
+    else
+    {
+    setSearchTerm(e.target.value);
+    }
     console.log(e.target.value)
 }
 
@@ -130,9 +130,9 @@ fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&maxResults=40
     return (
       <div style={{ height: 350, width: '100%' }}>
         <Container maxWidth={false} disableGutters>
-        <AppBar position="sticky" sx={{ bgcolor: "crimson"}}>
-              <Container maxWidth="xl">
-                <Toolbar disableGutters>
+        <AppBar position="sticky" sx={{ bgcolor: "#FF474C",maxWidth:"100%"}}>
+              <Container maxWidth="lg">
+                <Toolbar disableGutters maxWidth="xl">
                 <Box
                     component="img"
                     sx={{
@@ -151,7 +151,7 @@ fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&maxResults=40
                     sx={{
                       mr: 2,
                       display: { xs: 'none', md: 'flex' },
-                      fontFamily: 'monospace',
+                      fontFamily: 'initial',
                       fontWeight: 700,
                       letterSpacing: '.3rem',
                       color: 'inherit',
@@ -161,19 +161,19 @@ fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&maxResults=40
            
           </Typography>
           
-                  <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>  
+                  <Box sx={{ flexGrow: 2, display: { xs: 'none', md: 'flex' } }}>  
                   {pages.map((page) => (
               <Button
                 key={page}
                 onClick={openmenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2,fontFamily: 'initial', color: 'white', display: 'block' }}
               >
                 {page}
               </Button>
             ))}
                   </Box>
                   {alert ? <Alert variant="filled" severity="success">{alertContent}</Alert> : <></> } 
-                  <Search>         
+                  <Search sx={{marginRight:15}}>         
         <SearchIconWrapper>
         <SearchIcon />
         </SearchIconWrapper>
@@ -195,22 +195,17 @@ fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&maxResults=40
       </Badge>
       </Toolbar>
       </Container>
+      
       </AppBar>
+     
           <Grid container spacing={1} style={{marginTop:"20px"}}>
             {
               
               data.items.map((result,index)=>(
                 
-                <Grid item xs={12} sm={4} ms={4} key={index} >
-                  <Card sx={{ maxWidth: 500,backgroundColor:"rgb(245, 142, 104)" }}>
-                  <CardHeader 
-                 title={
-                  <Typography gutterBottom noWrap variant="body1"  component="h2">
-                    {result.volumeInfo.title}
-                  </Typography> 
-                 }
-                 style={{textAlign:"center"}}
-                 />     
+                <Grid item xs={10} sm={3} ms={3} key={index} >
+                  <Card sx={{ maxWidth: 500,backgroundColor:"white" }}>
+                    
                   <CardMedia
                     sx={{ height: 350}}
                     image= {`http://books.google.com/books/content?id=${result.id}&printsec=frontcover&img=1&zoom=1&edge=curl`}
@@ -222,22 +217,20 @@ fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&maxResults=40
                   {result.volumeInfo.authors}
                   </Typography>
                   </CardContent>
-                  {/* <Divider /> */}
-                  <CardActions style={{backgroundColor:"rgb(245, 142, 104)"}}>
-                    <Stack direction="row" spacing={4} >
+                   <Divider /> 
+                  <CardActions style={{backgroundColor:"white"}}>
+                    <Stack direction="row" spacing={8} >
                         <Link href={result.volumeInfo.infoLink}  target="_blank" >
                         <InfoIcon ></InfoIcon>
                         </Link>
                         <Link href={result.volumeInfo.previewLink}  target="_blank" >
                         <PreviewIcon ></PreviewIcon>
                         </Link>
-                        <Link href={result.saleInfo.buyLink}  target="_blank" >
-                        <ShoppingCartIcon ></ShoppingCartIcon>
+                        <Link href={result.accessInfo.webReaderLink}  target="_blank" >
+                        <AutoStoriesIcon ></AutoStoriesIcon>
                         </Link>
-                        <Typography gutterBottom noWrap variant="body2" component="div" textAlign={"unset"} >
-                       {result.volumeInfo.publisher}
-                        </Typography>
-                      <Button
+                        
+                      <Button 
   onClick={(e) => {
         //  const len=result.volumeInfo.industryIdentifiers[0].identifier.length;
     var email=sessionStorage.getItem('email')
@@ -260,11 +253,12 @@ fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&maxResults=40
         }
     })
   }}
->
-<Tooltip title="Add book" arrow>
-<CheckCircleIcon></CheckCircleIcon>
-</Tooltip>
+  variant="contained">
+ <Tooltip title="Add book" arrow> 
+ADD
+ </Tooltip>
 </Button> 
+
                     </Stack>
                 </CardActions>
               
@@ -278,14 +272,15 @@ fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&maxResults=40
             }
           
           </Grid>
-          
+         
           
           </Container>
           
           
           </div>   
           
-                 )
+                 
+        )
                 }
 
 export default MyBookshelf;

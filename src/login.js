@@ -1,4 +1,5 @@
 
+
 import { useState } from "react"
 import { useNavigate } from 'react-router-dom';
 import './login.css';
@@ -13,7 +14,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Axios from 'axios';
 import Alert from '@mui/material/Alert';
 import { Button } from '@mui/material';
-const pages = ['signup'];
+// const pages = ['signup'];
 function Login()  
 {
   const navigate = useNavigate();
@@ -52,7 +53,7 @@ function Login()
   return (
     <div >
         <Container maxWidth={false} disableGutters>
-            <AppBar position="sticky" sx={{ bgcolor: "crimson"}}>
+            <AppBar position="sticky" sx={{ bgcolor: "#FF474C"}}>
               <Container maxWidth="xl">
                 <Toolbar disableGutters>
                 <Box
@@ -71,9 +72,9 @@ function Login()
                     component="a"
                     href="/home"
                     sx={{
-                      mr: 2,
+                      mr: 4,
                       display: { xs: 'none', md: 'flex' },
-                      fontFamily: 'monospace',
+                      fontFamily: 'initial',
                       fontWeight: 700,
                       letterSpacing: '.3rem',
                       color: 'inherit',
@@ -82,15 +83,15 @@ function Login()
                   >
                     UniBooks
                   </Typography>
-                  {pages.map((page) => (
+                  {/* {pages.map((page) => (
               <Button
                 key={page}
                 onClick={openmenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2,fontFamily: 'initial', color: 'white', display: 'block' }}
               >
                 {page}
               </Button>
-            ))}
+            ))} */}
                   <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>  
                   </Box>
                    {alert ? <Alert variant="filled" severity="info">{alertContent}</Alert> : <></> }
@@ -125,7 +126,12 @@ function Login()
     </div>
     </form>
     <Alert icon={false} severity="info">
-    New User,please signup
+    New User,please signup here.<Button 
+       onClick={openmenu}
+    >
+      SIGNUP
+     
+    </Button>
 </Alert>
     </Card>
     

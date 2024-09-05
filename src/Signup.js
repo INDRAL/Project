@@ -20,7 +20,7 @@ function Signup()
 {
   const navigate = useNavigate();
   const openmenu=()=>{
-    navigate('/Home');
+    navigate('/Login');
     }
 const validateemail = e =>
 {
@@ -69,7 +69,7 @@ const [cpaswd, setConfirmPassword] = useState()
   return (
     <div >
         <Container maxWidth={false} disableGutters>
-            <AppBar position="sticky" sx={{ bgcolor: "crimson"}}>
+            <AppBar position="sticky" sx={{ bgcolor: "#FF474C"}}>
               <Container maxWidth="xl">
                 <Toolbar disableGutters>
                 <Box
@@ -88,9 +88,9 @@ const [cpaswd, setConfirmPassword] = useState()
                     component="a"
                     href="/home"
                     sx={{
-                      mr: 2,
-                      display: { xs: 'none', md: 'flex' },
-                      fontFamily: 'monospace',
+                        mr: 4,
+                      display: { xs: 'none', md: 'flex'},
+                      fontFamily: 'initial',
                       fontWeight: 700,
                       letterSpacing: '.3rem',
                       color: 'inherit',
@@ -99,11 +99,11 @@ const [cpaswd, setConfirmPassword] = useState()
                   >
                     UniBooks
                   </Typography>
-                  {pages.map((page) => (
+                   {pages.map((page) => (
               <Button
                 key={page}
                 onClick={openmenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ mx: 4, color: 'white', display: 'block', fontFamily: 'initial' }}
               >
                 {page}
               </Button>
@@ -157,6 +157,14 @@ const [cpaswd, setConfirmPassword] = useState()
   <input class="btn btn-danger" type="submit" value="Submit"/>
     </div>
     </form>
+        <Alert icon={false} severity="info">
+      click
+    <Button 
+     onClick={openmenu}
+    >
+      LOGIN
+    </Button>
+</Alert>
     </Card>
    
   </Grid>

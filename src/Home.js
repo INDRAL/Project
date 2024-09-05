@@ -20,7 +20,7 @@ const pages = ['Login'];
   return (
     <div >
         <Container maxWidth={false} disableGutters>
-    <AppBar position="sticky" sx={{ bgcolor: "crimson"}}>
+  <AppBar position="sticky" sx={{ bgcolor: "#FF474C"}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
         <Box
@@ -40,7 +40,7 @@ const pages = ['Login'];
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
+               fontFamily: 'initial',
               fontWeight: 700,
               letterSpacing: '.3rem',
               color: 'inherit',
@@ -54,7 +54,7 @@ const pages = ['Login'];
               <Button
                 key={page}
                 onClick={openmenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                 sx={{ mx: 4, color: 'white', display: 'block' ,fontFamily: 'initial',}}
               >
                 {page}
               </Button>
